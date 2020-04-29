@@ -8,11 +8,11 @@ export const users: IUser[] = [
   {
     username: "Aude",
     credit: 100,
-    theme: "Sloth-Theme",
+    theme: "Sloth",
   },
   {
     username: "Jay",
     credit: 100,
-    theme: "Sloth-Theme",
+    theme: "Sloth",
   },
 ];

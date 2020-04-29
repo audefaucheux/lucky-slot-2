@@ -1,18 +1,12 @@
-const Login = () => {
-  const themes: string[] = [
-    "Sloth Theme",
-    "Cat Theme",
-    "Duck Theme",
-    "Flatiron Theme",
-    "George Theme",
-    "Harry Potter Theme",
-    "Keanu Theme",
-    "South Park Theme",
-    "Zombie Theme",
-  ];
+import { themes } from "../Helpers/SlothImageCollection.data";
+import Link from "next/link";
 
+const Login = () => {
   return (
-    <div id="welcome" className="text-center">
+    <>
+      <div id="welcome" className="text-center">
+        <h1>Welcome to the Lucky Sloth!</h1>
+      </div>
       <div id="form" className="text-center"></div>
       <div className="form-container">
         <form id="create-user-form">
@@ -31,11 +25,14 @@ const Login = () => {
             </select>
           </div>
           <div className="form-container-items">
-            <input
+            {/* <input
               type="submit"
               value="PLAY"
               className="form-container-items btn btn-info"
-            />
+            /> */}
+            <Link href="/">
+              <a>PLAY</a>
+            </Link>
           </div>
         </form>
         <img
@@ -146,7 +143,7 @@ const Login = () => {
           height: 100px;
         }
       `}</style>
-    </div>
+    </>
   );
 };
 

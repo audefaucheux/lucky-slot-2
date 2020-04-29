@@ -1,14 +1,14 @@
-enum Themes {
-  Sloth = "SLOTH",
-  Cat = "CAT",
-  Duck = "DUCK",
-  Flatiron = "FLATIRON",
-  George = "GEORGE",
-  HarryPotter = "HARRY POTTER",
-  Keanu = "KEANU",
-  SouthPark = "SOUTH PARK",
-  Zombie = "ZOMBIE",
-}
+export const themes: string[] = [
+  "Sloth Theme",
+  "Cat Theme",
+  "Duck Theme",
+  "Flatiron Theme",
+  "George Theme",
+  "Harry Potter Theme",
+  "Keanu Theme",
+  "South Park Theme",
+  "Zombie Theme",
+];
 
 export const slothImageCollection = {
   Sloth: [
