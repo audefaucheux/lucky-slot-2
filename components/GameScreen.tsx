@@ -4,6 +4,8 @@ import { users } from "../Helpers/Users.data";
 import { useState } from "react";
 import { uniq } from "lodash";
 
+// const confetti = require("canvas-confetti");
+
 // const audio = new Audio("../public/sounds/slotmachinesound.wav");
 // const loseaudio = new Audio("sounds/lose.mp3");
 // const winaudio = new Audio("sounds/winaudio.wav");
@@ -13,10 +15,20 @@ const GameScreen = () => {
 
   const [user, setUser] = useState(users[0]);
   const [bet, setBet] = useState(10);
-  const [image1, setImage1] = useState(imagePlaceholder);
-  const [image2, setImage2] = useState(imagePlaceholder);
-  const [image3, setImage3] = useState(imagePlaceholder);
+  const [image1, setImage1] = useState({
+    src: imagePlaceholder,
+    className: "",
+  });
+  const [image2, setImage2] = useState({
+    src: imagePlaceholder,
+    className: "",
+  });
+  const [image3, setImage3] = useState({
+    src: imagePlaceholder,
+    className: "",
+  });
   const [resultMessage, setResultMessage] = useState("Spin to play !!");
+  // const [renderConfetti, setRenderConfetti] = useState(false);
 
   const getRandomNumber = (): number => Math.floor(Math.random() * 3);
 
@@ -28,10 +40,30 @@ const GameScreen = () => {
 
   const renderImage = (index: number, imageNumber: string) => {
     const imageUrl = slothImageCollection[user.theme][index];
-    imageNumber === "image1" && setImage1(imageUrl);
-    imageNumber === "image2" && setImage2(imageUrl);
-    imageNumber === "image3" && setImage3(imageUrl);
+    imageNumber === "image1" && setImage1({ src: imageUrl, className: "" });
+    imageNumber === "image2" && setImage2({ src: imageUrl, className: "" });
+    imageNumber === "image3" && setImage3({ src: imageUrl, className: "" });
   };
+
+  // const renderConfetti = () => {
+  //   let end = Date.now() + 1 * 1000;
+  //   let interval = setInterval(function () {
+  //     if (Date.now() > end) {
+  //       return clearInterval(interval);
+  //     }
+  //     confetti({
+  //       startVelocity: 30,
+  //       spread: 360,
+  //       ticks: 60,
+  //       shapes: ["square"],
+  //       origin: {
+  //         x: Math.random(),
+  //         // since they fall down, start a bit higher than random
+  //         y: Math.random() - 0.2,
+  //       },
+  //     });
+  //   }, 200);
+  // };
 
   const getResult = (randomNumberArray: number[]) => {
     const uniqueNumberArray = uniq(randomNumberArray);
@@ -41,12 +73,20 @@ const GameScreen = () => {
       setUser({ ...user, credit: user.credit + bet * 10 });
       setResultMessage("YOU WON !");
     } else {
+      // renderConfetti();
       setUser({ ...user, credit: user.credit - bet });
       setResultMessage("You lost");
     }
   };
 
+  const renderSpinningImage = (setState): void =>
+    setState({ src: imagePlaceholder, className: "animated infinite shake" });
+
   const handleSpin = () => {
+    renderSpinningImage(setImage1);
+    renderSpinningImage(setImage2);
+    renderSpinningImage(setImage3);
+
     const randomNumberArray: number[] = spinResults();
 
     setTimeout(() => renderImage(randomNumberArray[0], "image1"), 1000);
@@ -100,13 +140,25 @@ const GameScreen = () => {
       <div id="slot-machine">
         <div id="slot-image-container">
           <div id="image-1" className="slot-images-size">
-            <img src={image1} alt="placeholder" />
+            <img
+              src={image1.src}
+              alt="placeholder"
+              className={image1.className}
+            />
           </div>
           <div id="image-2" className="slot-images-size">
-            <img src={image2} alt="placeholder" />
+            <img
+              src={image2.src}
+              alt="placeholder"
+              className={image2.className}
+            />
           </div>
           <div id="image-3" className="slot-images-size">
-            <img src={image3} alt="placeholder" />
+            <img
+              src={image3.src}
+              alt="placeholder"
+              className={image3.className}
+            />
           </div>
         </div>
       </div>
