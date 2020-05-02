@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { slothImageCollection } from "../Helpers/SlothImageCollection.data";
 import { users } from "../Helpers/Users.data";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { uniq } from "lodash";
+
+// import spinningAudio from "../sounds/slotmachinesound.wav";
+// import WinningAudio from "../public/sounds/winaudio.wav";
+// import LosingAudio from "../public/sounds/lose.mp3";
 
 // const confetti = require("canvas-confetti");
 
@@ -28,6 +32,7 @@ const GameScreen = () => {
     className: "",
   });
   const [resultMessage, setResultMessage] = useState("Spin to play !!");
+  const [audioUrl, setAudioUrl] = useState("");
   // const [renderConfetti, setRenderConfetti] = useState(false);
 
   const getRandomNumber = (): number => Math.floor(Math.random() * 3);
@@ -103,6 +108,14 @@ const GameScreen = () => {
     setBet(bet + 10);
   };
 
+  const handleNoCredit = () => {
+    alert("You don't have enough credit to spin");
+  };
+
+  useEffect(() => {
+    if (bet > user.credit) setBet(user.credit);
+  }, [user.credit]);
+
   return (
     <div id="game-screen" className="text-center">
       <div id="slot-machine-header">
@@ -115,21 +128,21 @@ const GameScreen = () => {
             Bet amount: <span>{bet}</span>
           </strong>
           <button
-            disabled={bet < 20}
+            disabled={bet <= 10 || user.credit < 10}
             className="btn btn-primary"
             onClick={handleBetDecrement}
           >
             -
           </button>
           <button
-            disabled={bet >= user.credit - 10}
+            disabled={bet >= user.credit || user.credit < 10}
             className="btn btn-primary"
             onClick={handleBetIncrement}
           >
             +
           </button>
           <button
-            disabled={bet === user.credit}
+            disabled={bet >= user.credit || user.credit < 10}
             className="btn btn-primary"
             onClick={() => setBet(user.credit)}
           >
@@ -166,7 +179,7 @@ const GameScreen = () => {
         <img
           src="./images/game/spinbutton.png"
           alt="Spin Button"
-          onClick={handleSpin}
+          onClick={user.credit > 0 ? handleSpin : handleNoCredit}
         />
       </div>
       <div id="game-result-message" className="text">
