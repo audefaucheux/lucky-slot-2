@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "username": "Aude",
+      "credit": 100,
+      "theme": "Cat"
+    },
+    {
+      "username": "Jay",
+      "credit": 100,
+      "theme": "Sloth"
+    }
+  ]
+}
