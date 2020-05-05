@@ -3,6 +3,7 @@ import { slothImageCollection } from "../Helpers/SlothImageCollection.data";
 import { getUsers } from "../Adapters/APIs";
 import { useState, useEffect } from "react";
 import { uniq } from "lodash";
+import Leaderboard from "./Leaderboard";
 
 // import spinningAudio from "../sounds/slotmachinesound.wav";
 // import WinningAudio from "../public/sounds/winaudio.wav";
@@ -22,7 +23,7 @@ const GameScreen = () => {
     theme: "Cats",
     credit: 100,
   });
-  const [usersList, setUsersList] = useState([]);
+  const [users, setUsers] = useState([]);
   const [bet, setBet] = useState(10);
   const [image1, setImage1] = useState({
     src: imagePlaceholder,
@@ -118,7 +119,7 @@ const GameScreen = () => {
   };
 
   useEffect(() => {
-    getUsers().then(setUsersList);
+    getUsers().then(setUsers);
     if (bet > user.credit) setBet(user.credit);
   }, [user.credit]);
 
@@ -198,27 +199,7 @@ const GameScreen = () => {
         </Link>
       </div>
       <br />
-      <div id="leaderboard-table">
-        <h2>Leaderboard</h2>
-        {/* <table className="table table-striped table-bordered">
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Username</th>
-              <th>Credit</th>
-            </tr>
-          </thead>
-          <tbody>
-            {usersList.map((user, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{user.username}</td>
-                <td>£{user.credit}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table> */}
-      </div>
+      <Leaderboard users={users} />
       <div id="stop-logo">
         <img
           src="./images/game/when-the-fun-stops-stop.jpg"
