@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { uniq } from "lodash";
 import Leaderboard from "./Leaderboard";
 import SlotMachineImage from "./SlotMachineImage";
+import BetOption from "./BetOption";
 
 // import spinningAudio from "../sounds/slotmachinesound.wav";
 // import WinningAudio from "../public/sounds/winaudio.wav";
@@ -81,14 +82,6 @@ const GameScreen = () => {
     setTimeout(() => getResult(randomNumberArray), 2000);
   };
 
-  const handleBetDecrement = () => {
-    setBet(bet - 10);
-  };
-
-  const handleBetIncrement = () => {
-    setBet(bet + 10);
-  };
-
   const handleNoCredit = () => {
     alert("You don't have enough credit to spin");
   };
@@ -105,34 +98,8 @@ const GameScreen = () => {
           Hi {user.username}. Your current credit is
           <span className="credit-span"> £{user.credit}</span>
         </h2>
-        <div>
-          <strong id="bet-header">
-            Bet amount: <span>{bet}</span>
-          </strong>
-          <button
-            disabled={bet <= 10 || user.credit < 10}
-            className="btn btn-primary"
-            onClick={handleBetDecrement}
-          >
-            -
-          </button>
-          <button
-            disabled={bet >= user.credit || user.credit < 10}
-            className="btn btn-primary"
-            onClick={handleBetIncrement}
-          >
-            +
-          </button>
-          <button
-            disabled={bet >= user.credit || user.credit < 10}
-            className="btn btn-primary"
-            onClick={() => setBet(user.credit)}
-          >
-            Bet MAX
-          </button>
-        </div>
+        <BetOption {...{ bet, setBet, user }} />
       </div>
-
       <div id="slot-machine">
         <div id="slot-image-container">
           <SlotMachineImage image={image1} id={1} />
