@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { slothImageCollection } from "../Helpers/SlothImageCollection.data";
-import { users } from "../Helpers/Users.data";
+import { getUsers } from "../Adapters/APIs";
 import { useState, useEffect } from "react";
 import { uniq } from "lodash";
 
@@ -17,7 +17,12 @@ import { uniq } from "lodash";
 const GameScreen = () => {
   const imagePlaceholder = "./images/game/question-bear_dribbble.png";
 
-  const [user, setUser] = useState(users[0]);
+  const [user, setUser] = useState({
+    username: "Aude",
+    theme: "Cats",
+    credit: 100,
+  });
+  const [usersList, setUsersList] = useState([]);
   const [bet, setBet] = useState(10);
   const [image1, setImage1] = useState({
     src: imagePlaceholder,
@@ -32,7 +37,7 @@ const GameScreen = () => {
     className: "",
   });
   const [resultMessage, setResultMessage] = useState("Spin to play !!");
-  const [audioUrl, setAudioUrl] = useState("");
+  // const [audioUrl, setAudioUrl] = useState("");
   // const [renderConfetti, setRenderConfetti] = useState(false);
 
   const getRandomNumber = (): number => Math.floor(Math.random() * 3);
@@ -113,6 +118,7 @@ const GameScreen = () => {
   };
 
   useEffect(() => {
+    getUsers().then(setUsersList);
     if (bet > user.credit) setBet(user.credit);
   }, [user.credit]);
 
@@ -192,120 +198,33 @@ const GameScreen = () => {
         </Link>
       </div>
       <br />
-      <div id="leaderboard-table"></div>
+      <div id="leaderboard-table">
+        <h2>Leaderboard</h2>
+        {/* <table className="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Username</th>
+              <th>Credit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {usersList.map((user, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{user.username}</td>
+                <td>£{user.credit}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table> */}
+      </div>
       <div id="stop-logo">
         <img
           src="./images/game/when-the-fun-stops-stop.jpg"
           alt="When The Fun Stops, Stop"
         />
       </div>
-
-      <style jsx>{`
-        h1 {
-          font-family: "quite_magicalregular" !important;
-          font-size: 90px !important;
-        }
-
-        h2 {
-          font-family: "quite_magicalregular" !important;
-          font-size: 70px !important;
-        }
-
-        body {
-          font-family: "Trebuchet MS", Helvetica, sans-serif !important;
-          /* background-image: url("../images/sloth-theme/flying-sloth.jpg");
-  background-repeat: no-repeat; */
-          /* background-size: 100% */
-        }
-
-        table {
-          margin: 0 auto;
-          width: 500px !important;
-        }
-
-        input,
-        select {
-          height: 35px;
-        }
-
-        h1,
-        #bet-header span,
-        .credit-span {
-          color: lightseagreen;
-        }
-
-        div#slot-machine {
-          padding: 56px 43px 66px 43px;
-          background-image: url(../images/game/redslotmachine2.png);
-          background-repeat: no-repeat;
-          background-size: 590px auto;
-          margin: 27px auto 0;
-          width: 590px;
-        }
-
-        #slot-image-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          /* background-color: blue; */
-          width: 100%;
-          height: 243px;
-        }
-
-        .slot-images-size {
-          width: 33%;
-        }
-
-        .slot-images-size img {
-          height: 160px;
-        }
-
-        #slot-machine-header div button {
-          margin-left: 10px !important;
-        }
-
-        #spin-button {
-          width: 100px;
-          margin: 22px 0 0;
-        }
-
-        #bet-amount-input {
-          width: 50px;
-          margin-right: 10px;
-        }
-
-        #bet-header {
-          font-size: 26px;
-        }
-
-        .text {
-          font-size: 30px;
-        }
-
-        .text-magical {
-          font-family: "quite_magicalregular" !important;
-          font-size: 60px;
-        }
-
-        .form-container {
-          padding: 4% 0 4% 45%;
-          flex-direction: column;
-          text-align: left;
-        }
-
-        .form-container-items {
-          margin-top: 15px;
-          border-radius: 6px;
-        }
-
-        #stop-logo {
-          background-image: url("../images/game/Whenthefunstopsstop-color.jpg");
-        }
-
-        #stop-logo img {
-          height: 100px;
-        }
-      `}</style>
     </div>
   );
 };
