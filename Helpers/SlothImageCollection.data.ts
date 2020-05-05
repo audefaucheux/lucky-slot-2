@@ -1,15 +1,3 @@
-export const themes: string[] = [
-  "Sloth Theme",
-  "Cat Theme",
-  "Duck Theme",
-  "Flatiron Theme",
-  "George Theme",
-  "Harry Potter Theme",
-  "Keanu Theme",
-  "South Park Theme",
-  "Zombie Theme",
-];
-
 export const slothImageCollection = {
   Sloth: [
     "images/themes/sloth/javascript-ninja-sloth.png",
