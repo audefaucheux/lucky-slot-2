@@ -4,6 +4,7 @@ import { getUsers } from "../Adapters/APIs";
 import { useState, useEffect } from "react";
 import { uniq } from "lodash";
 import Leaderboard from "./Leaderboard";
+import SlotMachineImage from "./SlotMachineImage";
 
 // import spinningAudio from "../sounds/slotmachinesound.wav";
 // import WinningAudio from "../public/sounds/winaudio.wav";
@@ -16,30 +17,24 @@ import Leaderboard from "./Leaderboard";
 // const winaudio = new Audio("sounds/winaudio.wav");
 
 const GameScreen = () => {
-  const imagePlaceholder = "./images/game/question-bear_dribbble.png";
+  const placeholderSrc = "./images/game/question-bear_dribbble.png";
+
+  const imagePlaceholder = {
+    src: placeholderSrc,
+    className: "",
+  };
 
   const [user, setUser] = useState({
     username: "Aude",
-    theme: "Cats",
+    theme: "Cat",
     credit: 100,
   });
   const [users, setUsers] = useState([]);
   const [bet, setBet] = useState(10);
-  const [image1, setImage1] = useState({
-    src: imagePlaceholder,
-    className: "",
-  });
-  const [image2, setImage2] = useState({
-    src: imagePlaceholder,
-    className: "",
-  });
-  const [image3, setImage3] = useState({
-    src: imagePlaceholder,
-    className: "",
-  });
+  const [image1, setImage1] = useState(imagePlaceholder);
+  const [image2, setImage2] = useState(imagePlaceholder);
+  const [image3, setImage3] = useState(imagePlaceholder);
   const [resultMessage, setResultMessage] = useState("Spin to play !!");
-  // const [audioUrl, setAudioUrl] = useState("");
-  // const [renderConfetti, setRenderConfetti] = useState(false);
 
   const getRandomNumber = (): number => Math.floor(Math.random() * 3);
 
@@ -56,26 +51,6 @@ const GameScreen = () => {
     imageNumber === "image3" && setImage3({ src: imageUrl, className: "" });
   };
 
-  // const renderConfetti = () => {
-  //   let end = Date.now() + 1 * 1000;
-  //   let interval = setInterval(function () {
-  //     if (Date.now() > end) {
-  //       return clearInterval(interval);
-  //     }
-  //     confetti({
-  //       startVelocity: 30,
-  //       spread: 360,
-  //       ticks: 60,
-  //       shapes: ["square"],
-  //       origin: {
-  //         x: Math.random(),
-  //         // since they fall down, start a bit higher than random
-  //         y: Math.random() - 0.2,
-  //       },
-  //     });
-  //   }, 200);
-  // };
-
   const getResult = (randomNumberArray: number[]) => {
     const uniqueNumberArray = uniq(randomNumberArray);
     if (uniqueNumberArray.length === 1) {
@@ -91,7 +66,7 @@ const GameScreen = () => {
   };
 
   const renderSpinningImage = (setState): void =>
-    setState({ src: imagePlaceholder, className: "animated infinite shake" });
+    setState({ src: placeholderSrc, className: "animated infinite shake" });
 
   const handleSpin = () => {
     renderSpinningImage(setImage1);
@@ -157,31 +132,15 @@ const GameScreen = () => {
           </button>
         </div>
       </div>
+
       <div id="slot-machine">
         <div id="slot-image-container">
-          <div id="image-1" className="slot-images-size">
-            <img
-              src={image1.src}
-              alt="placeholder"
-              className={image1.className}
-            />
-          </div>
-          <div id="image-2" className="slot-images-size">
-            <img
-              src={image2.src}
-              alt="placeholder"
-              className={image2.className}
-            />
-          </div>
-          <div id="image-3" className="slot-images-size">
-            <img
-              src={image3.src}
-              alt="placeholder"
-              className={image3.className}
-            />
-          </div>
+          <SlotMachineImage image={image1} id={1} />
+          <SlotMachineImage image={image2} id={2} />
+          <SlotMachineImage image={image3} id={3} />
         </div>
       </div>
+
       <div className="spin-button">
         <img
           src="./images/game/spinbutton.png"
