@@ -10,9 +10,6 @@ h2 {
 
 body {
   font-family: "Trebuchet MS", Helvetica, sans-serif !important;
-  /* background-image: url("../images/sloth-theme/flying-sloth.jpg");
-  background-repeat: no-repeat; */
-  /* background-size: 100% */
 }
 
 table {
@@ -44,7 +41,6 @@ div#slot-machine {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: blue; */
   width: 100%;
   height: 243px;
 }

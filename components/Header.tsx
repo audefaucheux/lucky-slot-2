@@ -13,6 +13,10 @@ const Header = () => {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
       />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@700&display=swap"
+        rel="stylesheet"
+      />
       <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@0.4.0/dist/confetti.browser.min.js"></script>
     </Head>
   );
