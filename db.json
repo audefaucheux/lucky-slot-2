@@ -1,11 +1,13 @@
 {
   "users": [
     {
+      "id": 1,
       "username": "Aude",
       "credit": 100,
-      "theme": "Cat"
+      "theme": "Duck"
     },
     {
+      "id": 2,
       "username": "Jay",
       "credit": 100,
       "theme": "Sloth"
