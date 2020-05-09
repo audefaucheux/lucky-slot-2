@@ -10,9 +10,9 @@ export const slothImageCollection = {
     "images/themes/cat/scared-cat.jpg",
   ],
   Duck: [
-    "images/themes/rubber-duck/cloud-duck.jpg",
-    "images/themes/rubber-duck/polka-dots-duck.jpg",
-    "images/themes/rubber-duck/watermelon-duck.jpg",
+    "images/themes/duck/cloud-duck.jpg",
+    "images/themes/duck/polka-dots-duck.jpg",
+    "images/themes/duck/watermelon-duck.jpg",
   ],
   George: [
     "images/themes/george/angry-george.jpg",
