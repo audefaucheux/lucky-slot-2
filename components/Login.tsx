@@ -4,7 +4,14 @@ const Login = ({ findUser }) => {
   const [username, setUsername] = useState("");
   const [themeSelected, setThemeSelected] = useState("");
 
-  const themes = ["Sloth", "Cat", "Duck", "George", "Keanu", "South Park"];
+  const themes = ["sloth", "cat", "duck", "george", "keanu", "south-park"];
+
+  const formatTheme = (theme: string) => {
+    const themeWords = theme.split("-");
+    const capitalizeString = (word: string) =>
+      word.charAt(0).toUpperCase() + word.slice(1);
+    return themeWords.map((word) => capitalizeString(word)).join(" ");
+  };
 
   const handleUsersnameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setUsername(event.target.value);
@@ -42,7 +49,7 @@ const Login = ({ findUser }) => {
               <option value="">Select theme...</option>
               {themes.map((theme, index) => (
                 <option key={index} value={theme}>
-                  {theme}
+                  {formatTheme(theme)}
                 </option>
               ))}
             </select>

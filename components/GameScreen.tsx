@@ -1,20 +1,9 @@
-import Link from "next/link";
 import { slothImageCollection } from "../Helpers/SlothImageCollection.data";
 import { useState, useEffect } from "react";
 import { uniq } from "lodash";
 import Leaderboard from "./Leaderboard";
 import SlotMachineImage from "./SlotMachineImage";
 import BetOption from "./BetOption";
-
-// import spinningAudio from "../sounds/slotmachinesound.wav";
-// import WinningAudio from "../public/sounds/winaudio.wav";
-// import LosingAudio from "../public/sounds/lose.mp3";
-
-// const confetti = require("canvas-confetti");
-
-// const audio = new Audio("../public/sounds/slotmachinesound.wav");
-// const loseaudio = new Audio("sounds/lose.mp3");
-// const winaudio = new Audio("sounds/winaudio.wav");
 
 const GameScreen = ({ users, user, setUser }) => {
   const placeholderSrc = "./images/game/question-bear_dribbble.png";
@@ -48,12 +37,9 @@ const GameScreen = ({ users, user, setUser }) => {
   const getResult = (randomNumberArray: number[]) => {
     const uniqueNumberArray = uniq(randomNumberArray);
     if (uniqueNumberArray.length === 1) {
-      // renderConfetti();
-      // winaudio.play();
       setUser({ ...user, credit: user.credit + bet * 10 });
       setResultMessage("YOU WON !");
     } else {
-      // renderConfetti();
       setUser({ ...user, credit: user.credit - bet });
       setResultMessage("You lost");
     }

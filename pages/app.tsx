@@ -27,6 +27,7 @@ const SlotMachineApp = () => {
   };
 
   useEffect(() => {
+    console.log("re-rendering");
     getUsers().then(setUsers);
   }, [user]);
   return (

@@ -4,19 +4,25 @@
       "id": 1,
       "username": "Aude",
       "credit": 100,
-      "theme": "Cat"
+      "theme": "cat"
     },
     {
       "id": 2,
       "username": "Jay",
       "credit": 100,
-      "theme": "Sloth"
+      "theme": "sloth"
     },
     {
       "username": "Amy",
-      "theme": "Cat",
+      "theme": "cat",
       "credit": 100,
       "id": 3
+    },
+    {
+      "username": "aude",
+      "theme": "south-park",
+      "credit": 100,
+      "id": 4
     }
   ]
 }
