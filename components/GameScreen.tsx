@@ -4,6 +4,7 @@ import { uniq } from "lodash";
 import Leaderboard from "./Leaderboard";
 import SlotMachineImage from "./SlotMachineImage";
 import BetOption from "./BetOption";
+import { updateUser } from "../Adapters/APIs";
 
 const GameScreen = ({ users, user, setUser }) => {
   const placeholderSrc = "./images/game/question-bear_dribbble.png";
@@ -37,10 +38,15 @@ const GameScreen = ({ users, user, setUser }) => {
   const getResult = (randomNumberArray: number[]) => {
     const uniqueNumberArray = uniq(randomNumberArray);
     if (uniqueNumberArray.length === 1) {
-      setUser({ ...user, credit: user.credit + bet * 10 });
+      const userUpdate = {
+        ...user,
+        credit: user.credit + bet * 10,
+      };
+      updateUser(userUpdate.id, userUpdate).then(setUser);
       setResultMessage("YOU WON !");
     } else {
-      setUser({ ...user, credit: user.credit - bet });
+      const userUpdate = { ...user, credit: user.credit - bet };
+      updateUser(userUpdate.id, userUpdate).then(setUser);
       setResultMessage("You lost");
     }
   };
@@ -67,7 +73,7 @@ const GameScreen = ({ users, user, setUser }) => {
 
   useEffect(() => {
     if (bet > user.credit) setBet(user.credit);
-  }, [user.credit]);
+  }, [user]);
 
   return (
     <div id="game-screen" className="text-center">
