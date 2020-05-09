@@ -1,4 +1,13 @@
+import { User } from "../interfaces/User";
+
 const Leaderboard = ({ users }) => {
+  const leaderBoardTopTen = (users: User[]) => {
+    const orderedUsers = users.sort((a, b) =>
+      a.credit < b.credit ? 1 : b.credit < a.credit ? -1 : 0
+    );
+    return orderedUsers.slice(0, 9);
+  };
+
   return (
     <div id="leaderboard-table">
       <h2>Leaderboard</h2>
@@ -11,7 +20,7 @@ const Leaderboard = ({ users }) => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user, index) => (
+          {leaderBoardTopTen(users).map((user: User, index: number) => (
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{user.username}</td>
