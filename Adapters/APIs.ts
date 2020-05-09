@@ -8,7 +8,7 @@ export const getUsers = (): Promise<User[]> => {
   }).then((res) => res.data);
 };
 
-export const createUser = (data: User): Promise<User[]> => {
+export const createUser = (data: User): Promise<User> => {
   console.log(data);
   return axios({
     method: "post",
@@ -17,7 +17,7 @@ export const createUser = (data: User): Promise<User[]> => {
   }).then((res) => res.data);
 };
 
-export const updateUser = (id: string, data: User): Promise<User[]> => {
+export const updateUser = (id: number, data: User): Promise<User> => {
   return axios({
     method: "patch",
     url: `http://localhost:3004/users/${id}`,
