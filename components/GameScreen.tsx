@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { slothImageCollection } from "../Helpers/SlothImageCollection.data";
-import { getUsers } from "../Adapters/APIs";
 import { useState, useEffect } from "react";
 import { uniq } from "lodash";
 import Leaderboard from "./Leaderboard";
@@ -17,7 +16,7 @@ import BetOption from "./BetOption";
 // const loseaudio = new Audio("sounds/lose.mp3");
 // const winaudio = new Audio("sounds/winaudio.wav");
 
-const GameScreen = () => {
+const GameScreen = ({ users, user, setUser }) => {
   const placeholderSrc = "./images/game/question-bear_dribbble.png";
 
   const imagePlaceholder = {
@@ -25,12 +24,6 @@ const GameScreen = () => {
     className: "",
   };
 
-  const [user, setUser] = useState({
-    username: "Aude",
-    theme: "Cat",
-    credit: 100,
-  });
-  const [users, setUsers] = useState([]);
   const [bet, setBet] = useState(10);
   const [image1, setImage1] = useState(imagePlaceholder);
   const [image2, setImage2] = useState(imagePlaceholder);
@@ -87,7 +80,6 @@ const GameScreen = () => {
   };
 
   useEffect(() => {
-    getUsers().then(setUsers);
     if (bet > user.credit) setBet(user.credit);
   }, [user.credit]);
 
@@ -120,18 +112,12 @@ const GameScreen = () => {
       </div>
       <br />
       <div id="back-to-login">
-        <Link href="/login">
-          <a className="btn btn-danger">EXIT</a>
-        </Link>
+        <a className="btn btn-danger" onClick={() => setUser({})}>
+          EXIT
+        </a>
       </div>
       <br />
       <Leaderboard users={users} />
-      <div id="stop-logo">
-        <img
-          src="./images/game/when-the-fun-stops-stop.jpg"
-          alt="When The Fun Stops, Stop"
-        />
-      </div>
     </div>
   );
 };

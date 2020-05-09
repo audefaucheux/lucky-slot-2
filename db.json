@@ -4,13 +4,19 @@
       "id": 1,
       "username": "Aude",
       "credit": 100,
-      "theme": "Duck"
+      "theme": "Cat"
     },
     {
       "id": 2,
       "username": "Jay",
       "credit": 100,
       "theme": "Sloth"
+    },
+    {
+      "username": "Amy",
+      "theme": "Cat",
+      "credit": 100,
+      "id": 3
     }
   ]
 }
