@@ -25,49 +25,47 @@ const Login = ({ findUser }) => {
   };
 
   return (
-    <>
-      <div id="welcome" className="text-center">
-        <h1>Welcome to the Lucky Sloth!</h1>
-      </div>
-      <div id="form" className="text-center"></div>
-      <div className="form-container">
-        <form id="create-user-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="form-container-items"
-            placeholder="enter username..."
-            onChange={handleUsersnameChange}
-            required
-          />
-          <div className="form-container-items">
-            <select
-              id="theme-dropdown"
-              className="form-container-items"
-              onChange={handleThemeSelected}
-              required
-            >
-              <option value="">Select theme...</option>
-              {themes.map((theme, index) => (
-                <option key={index} value={theme}>
-                  {formatTheme(theme)}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="form-container-items">
-            <input
-              type="submit"
-              value="PLAY"
-              className="form-container-items btn btn-info"
-            />
-          </div>
-        </form>
-        <img
-          src="https://media3.giphy.com/media/BCtjVLKRoFVza/source.gif"
-          alt="sloth-gif"
+    <div id="login-content" className="center">
+      <h1 id="welcome" className="text-center">
+        Welcome to the Lucky Sloth!
+      </h1>
+      <form
+        id="create-user-form"
+        onSubmit={handleSubmit}
+        className="form-container"
+      >
+        <input
+          type="text"
+          className="form-container-items"
+          placeholder="enter username..."
+          onChange={handleUsersnameChange}
+          required
         />
-      </div>
-    </>
+        <select
+          id="theme-dropdown"
+          className="form-container-items"
+          onChange={handleThemeSelected}
+          required
+        >
+          <option value="">Select theme...</option>
+          {themes.map((theme, index) => (
+            <option key={index} value={theme}>
+              {formatTheme(theme)}
+            </option>
+          ))}
+        </select>
+        <input
+          type="submit"
+          value="PLAY"
+          className="form-container-items btn btn-info"
+        />
+      </form>
+      <img
+        src="https://media3.giphy.com/media/BCtjVLKRoFVza/source.gif"
+        alt="sloth-gif"
+        className="center"
+      />
+    </div>
   );
 };
 

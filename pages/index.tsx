@@ -4,15 +4,15 @@ const Home = () => {
   return (
     <>
       <SlotMachineApp />
-
       <style jsx global>{`
+        //// GENERAL ////
         h1 {
-          font-family: "quite_magicalregular" !important;
+          font-family: "Ribeye", cursive !important;
           font-size: 90px !important;
         }
 
         h2 {
-          font-family: "quite_magicalregular" !important;
+          font-family: "Ribeye", cursive !important;
           font-size: 70px !important;
         }
 
@@ -20,21 +20,50 @@ const Home = () => {
           font-family: "Trebuchet MS", Helvetica, sans-serif !important;
         }
 
+        #welcome,
+        #bet-header span,
+        .credit-span {
+          color: lightseagreen;
+        }
+
+        .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        //// LEADERBOARD ////
         table {
           margin: 0 auto;
           width: 500px !important;
         }
 
+        //// LOGIN ////
+
+        #login-content {
+          min-height: 45rem;
+        }
+
+        //// FORM ////
+        .form-container {
+          display: flex;
+          padding: 3rem 0;
+          flex-direction: column;
+        }
+
+        .form-container-items {
+          margin-top: 15px;
+          border-radius: 6px;
+          align-self: center;
+        }
+
         input,
         select {
           height: 35px;
+          width: 21rem;
         }
 
-        h1,
-        #bet-header span,
-        .credit-span {
-          color: lightseagreen;
-        }
+        //// SLOT MACHINE ////
 
         div#slot-machine {
           padding: 56px 43px 66px 43px;
@@ -70,6 +99,8 @@ const Home = () => {
           margin: 22px 0 0;
         }
 
+        //// BET ////
+
         #bet-amount-input {
           width: 50px;
           margin-right: 10px;
@@ -88,23 +119,17 @@ const Home = () => {
           font-size: 60px;
         }
 
-        .form-container {
-          padding: 4% 0 4% 45%;
-          flex-direction: column;
-          text-align: left;
-        }
-
-        .form-container-items {
-          margin-top: 15px;
-          border-radius: 6px;
-        }
+        //// STOP LOGO ////
 
         #stop-logo {
           background-image: url("../images/game/Whenthefunstopsstop-color.jpg");
+          height: 8rem;
         }
 
         #stop-logo img {
-          height: 100px;
+          height: 6rem;
+          margin-top: 0.5rem;
+          margin-bottom: 0.5rem;
         }
       `}</style>
     </>
