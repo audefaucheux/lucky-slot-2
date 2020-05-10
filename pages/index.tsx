@@ -6,23 +6,18 @@ const Home = () => {
       <SlotMachineApp />
       <style jsx global>{`
         //// GENERAL ////
-        h1 {
-          font-family: "Ribeye", cursive !important;
-          font-size: 90px !important;
-        }
 
-        h2 {
-          font-family: "Ribeye", cursive !important;
-          font-size: 70px !important;
+        h1 {
+          font-family: "Ribeye", cursive;
+          font-size: 4rem;
+          margin: 1rem;
         }
 
         body {
-          font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+          font-family: "Trebuchet MS", Helvetica, sans-serif;
         }
 
-        #welcome,
-        #bet-header span,
-        .credit-span {
+        .sea-green {
           color: lightseagreen;
         }
 
@@ -32,10 +27,15 @@ const Home = () => {
           margin-right: auto;
         }
 
+        button {
+          margin: 0.3rem;
+        }
+
         //// LEADERBOARD ////
+
         table {
           margin: 0 auto;
-          width: 500px !important;
+          width: 33rem !important;
         }
 
         //// LOGIN ////
@@ -52,20 +52,38 @@ const Home = () => {
         }
 
         .form-container-items {
-          margin-top: 15px;
+          margin-top: 1rem;
           border-radius: 6px;
           align-self: center;
         }
 
         input,
         select {
-          height: 35px;
+          height: 2rem;
           width: 21rem;
+        }
+
+        //// TOP BANNER ////
+
+        #top-banner {
+          display: flex;
+          width: 100%;
+          background-color: lightseagreen;
+          justify-content: space-between;
+        }
+
+        #current-user {
+          display: flex;
+          align-self: center;
+        }
+
+        #top-banner img {
+          height: 3.5rem;
         }
 
         //// SLOT MACHINE ////
 
-        div#slot-machine {
+        #slot-machine {
           padding: 56px 43px 66px 43px;
           background-image: url(../images/game/redslotmachine2.png);
           background-repeat: no-repeat;
@@ -90,16 +108,17 @@ const Home = () => {
           height: 160px;
         }
 
-        #slot-machine-header div button {
-          margin-left: 10px !important;
-        }
-
         .spin-button {
-          width: 100px;
-          margin: 22px 0 0;
+          width: 12rem;
+          margin: 1rem;
         }
 
         //// BET ////
+
+        #bet-container {
+          display: flex;
+          justify-content: center;
+        }
 
         #bet-amount-input {
           width: 50px;
@@ -108,6 +127,7 @@ const Home = () => {
 
         #bet-header {
           font-size: 26px;
+          margin: 0.3rem;
         }
 
         .text {
@@ -124,12 +144,13 @@ const Home = () => {
         #stop-logo {
           background-image: url("../images/game/Whenthefunstopsstop-color.jpg");
           height: 8rem;
+          display: flex;
+          justify-content: center;
         }
 
         #stop-logo img {
           height: 6rem;
-          margin-top: 0.5rem;
-          margin-bottom: 0.5rem;
+          align-self: center;
         }
       `}</style>
     </>

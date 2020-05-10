@@ -10,7 +10,7 @@ const Leaderboard = ({ users }) => {
 
   return (
     <div id="leaderboard-table">
-      <h2>Leaderboard</h2>
+      <h1>Leaderboard</h1>
       <table className="table table-striped table-bordered">
         <thead>
           <tr>

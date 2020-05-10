@@ -3,7 +3,7 @@ const BetOption = ({ bet, setBet, user }) => {
   const handleBetIncrement = () => setBet(bet + 10);
 
   return (
-    <div>
+    <div id="bet-container">
       <strong id="bet-header">
         Bet amount: <span>{bet}</span>
       </strong>

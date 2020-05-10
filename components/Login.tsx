@@ -26,9 +26,7 @@ const Login = ({ findUser }) => {
 
   return (
     <div id="login-content" className="center">
-      <h1 id="welcome" className="text-center">
-        Welcome to the Lucky Sloth!
-      </h1>
+      <h1 className="text-center sea-green">Welcome to the Lucky Sloth!</h1>
       <form
         id="create-user-form"
         onSubmit={handleSubmit}

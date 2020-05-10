@@ -1,10 +1,13 @@
-import { slothImageCollection } from "../Helpers/SlothImageCollection.data";
 import { useState, useEffect } from "react";
 import { uniq } from "lodash";
-import Leaderboard from "./Leaderboard";
+
+import { slothImageCollection } from "../Helpers/SlothImageCollection.data";
 import SlotMachineImage from "./SlotMachineImage";
-import BetOption from "./BetOption";
 import { updateUser } from "../Adapters/APIs";
+
+import BetOption from "./BetOption";
+import Leaderboard from "./Leaderboard";
+import TopBanner from "./TopBanner";
 
 const GameScreen = ({ users, user, setUser }) => {
   const placeholderSrc = "./images/game/question-bear_dribbble.png";
@@ -18,7 +21,6 @@ const GameScreen = ({ users, user, setUser }) => {
   const [image1, setImage1] = useState(imagePlaceholder);
   const [image2, setImage2] = useState(imagePlaceholder);
   const [image3, setImage3] = useState(imagePlaceholder);
-  const [resultMessage, setResultMessage] = useState("Spin to play !!");
 
   const getRandomNumber = (): number => Math.floor(Math.random() * 3);
 
@@ -43,11 +45,9 @@ const GameScreen = ({ users, user, setUser }) => {
         credit: user.credit + bet * 10,
       };
       updateUser(userUpdate.id, userUpdate).then(setUser);
-      setResultMessage("YOU WON !");
     } else {
       const userUpdate = { ...user, credit: user.credit - bet };
       updateUser(userUpdate.id, userUpdate).then(setUser);
-      setResultMessage("You lost");
     }
   };
 
@@ -76,14 +76,13 @@ const GameScreen = ({ users, user, setUser }) => {
   }, [user]);
 
   return (
-    <div id="game-screen" className="text-center">
-      <div id="slot-machine-header">
-        <h2 data-user-id="0">
-          Hi {user.username}. Your current credit is
-          <span className="credit-span"> £{user.credit}</span>
-        </h2>
-        <BetOption {...{ bet, setBet, user }} />
-      </div>
+    <div className="text-center">
+      <TopBanner user={user} setUser={setUser} />
+      <h1>
+        Your current credit is{" "}
+        <span className="sea-green"> £{user.credit}</span>
+      </h1>
+      <BetOption {...{ bet, setBet, user }} />
       <div id="slot-machine">
         <div id="slot-image-container">
           <SlotMachineImage image={image1} id={1} />
@@ -91,24 +90,12 @@ const GameScreen = ({ users, user, setUser }) => {
           <SlotMachineImage image={image3} id={3} />
         </div>
       </div>
-
-      <div className="spin-button">
-        <img
-          src="./images/game/spinbutton.png"
-          alt="Spin Button"
-          onClick={user.credit > 0 ? handleSpin : handleNoCredit}
-        />
-      </div>
-      <div id="game-result-message" className="text">
-        {resultMessage}
-      </div>
-      <br />
-      <div id="back-to-login">
-        <a className="btn btn-danger" onClick={() => setUser({})}>
-          EXIT
-        </a>
-      </div>
-      <br />
+      <img
+        src="./images/game/spinbutton.png"
+        alt="Spin Button"
+        onClick={user.credit > 0 ? handleSpin : handleNoCredit}
+        className="spin-button"
+      />
       <Leaderboard users={users} />
     </div>
   );
