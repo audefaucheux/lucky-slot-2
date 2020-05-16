@@ -8,8 +8,7 @@ export const getUsers = (): Promise<User[]> => {
   }).then((res) => res.data);
 };
 
-export const createUser = (data: User): Promise<User> => {
-  console.log(data);
+export const createUser = (data): Promise<User> => {
   return axios({
     method: "post",
     url: "http://localhost:3004/users",

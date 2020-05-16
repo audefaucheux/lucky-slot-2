@@ -9,7 +9,7 @@ import BetOption from "./BetOption";
 import Leaderboard from "./Leaderboard";
 import TopBanner from "./TopBanner";
 
-const GameScreen = ({ users, user, setUser }) => {
+const GameScreen = ({ users, user, setUser, themeSelected }) => {
   const placeholderSrc = "./images/game/question-bear_dribbble.png";
 
   const imagePlaceholder = {
@@ -31,7 +31,7 @@ const GameScreen = ({ users, user, setUser }) => {
   ];
 
   const renderImage = (index: number, imageNumber: string) => {
-    const imageUrl = slothImageCollection[user.theme][index];
+    const imageUrl = slothImageCollection[themeSelected][index];
     imageNumber === "image1" && setImage1({ src: imageUrl, className: "" });
     imageNumber === "image2" && setImage2({ src: imageUrl, className: "" });
     imageNumber === "image3" && setImage3({ src: imageUrl, className: "" });

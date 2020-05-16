@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-const Login = ({ findUser }) => {
+const Login = ({ findUser, setThemeSelected }) => {
   const [username, setUsername] = useState("");
-  const [themeSelected, setThemeSelected] = useState("");
 
   const themes = ["sloth", "cat", "duck", "george", "keanu", "south-park"];
 
@@ -21,7 +20,7 @@ const Login = ({ findUser }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    findUser({ username, theme: themeSelected });
+    findUser(username);
   };
 
   return (
