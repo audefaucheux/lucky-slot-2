@@ -33,11 +33,12 @@ npm run dev
 
 - Aude Faucheux
 
-Based on a Bootcamp project in collaboration with Angelina Shin [](https://github.com/audefaucheux/mod-3-project-lucky-slot)
+Based on a Bootcamp project in collaboration with Angelina Shin https://github.com/audefaucheux/mod-3-project-lucky-slot
 
 # Live links
 
 [frontend](https://lucky-sloth-2-frontend.now.sh/)
+
 [API](https://lucky-sloth-2-backend.herokuapp.com/users)
 
 # Overview
