@@ -8,14 +8,14 @@ import Login from "../components/Login";
 import Footer from "../components/Footer";
 
 const SlotMachineApp = () => {
-  const defaultUser = {
-    username: "Aude",
-    credit: 100,
-    id: 1,
-  };
+  // const defaultUser = {
+  //   username: "Aude",
+  //   credit: 100,
+  //   id: 1,
+  // };
 
   const [users, setUsers] = useState([]);
-  const [user, setUser] = useState(defaultUser);
+  const [user, setUser] = useState({});
   const [themeSelected, setThemeSelected] = useState("sloth");
 
   const findUser = (usernameInput: string) => {
