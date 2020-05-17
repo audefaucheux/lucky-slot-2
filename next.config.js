@@ -1,5 +1,5 @@
 module.exports = {
   env: {
-    SERVER: "http://localhost:3004",
+    SERVER: process.env.SERVER,
   },
 };
