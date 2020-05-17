@@ -33,7 +33,7 @@ npm run dev
 
 - Aude Faucheux
 
-Based on a Bootcamp project in collaboration with Angelina Shin https://github.com/audefaucheux/mod-3-project-lucky-slot
+Based on a Flatiron school bootcamp project in collaboration with Angelina Manley https://github.com/audefaucheux/mod-3-project-lucky-slot
 
 # Live links
 
