@@ -9,7 +9,7 @@ The Lucky Sloth app uses Ruby on Rails backend and Next.js for the frontend.
 
 [Click here](https://github.com/audefaucheux/lucky-sloth-2-backend) to set up the backend
 
-To set up the front end locally:
+To set up the frontend locally:
 
 Run npm install
 
@@ -21,7 +21,6 @@ Run the development server
 
 ```
 npm run dev
-
 ```
 
 # Built with
@@ -40,5 +39,3 @@ Based on a Flatiron school bootcamp project in collaboration with Angelina Manle
 [frontend](https://lucky-sloth-2-frontend.now.sh/)
 
 [API](https://lucky-sloth-2-backend.herokuapp.com/users)
-
-# Overview
