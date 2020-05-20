@@ -18,7 +18,6 @@ const ThemeSelection = ({ themeSelected, setThemeSelected }) => {
         onChange={handleThemeSelected}
         required
       >
-        <option value="">Select theme...</option>
         {themes.map((theme, index) => (
           <option key={index} value={theme}>
             {formatTheme(theme)}
