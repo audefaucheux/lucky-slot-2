@@ -17,7 +17,6 @@ const SlotMachineApp = () => {
   const [users, setUsers] = useState([]);
   // const [user, setUser] = useState(defaultUser);
   const [user, setUser] = useState({});
-  const [themeSelected, setThemeSelected] = useState("sloth");
 
   const findUser = (usernameInput: string) => {
     const existingUser = users.find(
@@ -39,9 +38,9 @@ const SlotMachineApp = () => {
     <>
       <Header />
       {isEmpty(user) ? (
-        <Login {...{ findUser, setThemeSelected }} />
+        <Login {...{ findUser }} />
       ) : (
-        <GameScreen {...{ users, user, setUser, themeSelected }} />
+        <GameScreen {...{ users, user, setUser }} />
       )}
       <Footer />
     </>

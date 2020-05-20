@@ -8,8 +8,9 @@ import { updateUser } from "../Adapters/APIs";
 import BetOption from "./BetOption";
 import Leaderboard from "./Leaderboard";
 import TopBanner from "./TopBanner";
+import ThemeSelection from "./ThemeSelection";
 
-const GameScreen = ({ users, user, setUser, themeSelected }) => {
+const GameScreen = ({ users, user, setUser }) => {
   const placeholderSrc = "./images/game/question-bear_dribbble.png";
 
   const imagePlaceholder = {
@@ -17,6 +18,7 @@ const GameScreen = ({ users, user, setUser, themeSelected }) => {
     className: "",
   };
 
+  const [themeSelected, setThemeSelected] = useState("sloth");
   const [bet, setBet] = useState(10);
   const [image1, setImage1] = useState(imagePlaceholder);
   const [image2, setImage2] = useState(imagePlaceholder);
@@ -83,6 +85,7 @@ const GameScreen = ({ users, user, setUser, themeSelected }) => {
         <span className="sea-green"> £{user.credit}</span>
       </h1>
       <BetOption {...{ bet, setBet, user }} />
+      <ThemeSelection {...{ themeSelected, setThemeSelected }} />
       <div id="slot-machine">
         <div id="slot-image-container">
           <SlotMachineImage image={image1} id={1} />
