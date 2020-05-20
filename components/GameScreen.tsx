@@ -44,7 +44,7 @@ const GameScreen = ({ users, user, setUser }) => {
     if (uniqueNumberArray.length === 1) {
       const userUpdate = {
         ...user,
-        credit: user.credit + bet * 10,
+        credit: user.credit + bet * 5,
       };
       updateUser(userUpdate.id, userUpdate).then(setUser);
     } else {
