@@ -15,6 +15,7 @@ const SlotMachineApp = () => {
   // };
 
   const [users, setUsers] = useState([]);
+  // const [user, setUser] = useState(defaultUser);
   const [user, setUser] = useState({});
   const [themeSelected, setThemeSelected] = useState("sloth");
 
