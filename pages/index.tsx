@@ -98,6 +98,7 @@ const Home = () => {
           align-items: center;
           width: 100%;
           height: 243px;
+          padding: 2.5rem 0;
         }
 
         .slot-images-size {
@@ -105,7 +106,8 @@ const Home = () => {
         }
 
         .slot-images-size img {
-          height: 160px;
+          max-height: 9rem;
+          max-width: 9rem;
         }
 
         .spin-button {
@@ -146,10 +148,6 @@ const Home = () => {
           height: 8rem;
           display: flex;
           justify-content: center;
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
         }
 
         #stop-logo img {

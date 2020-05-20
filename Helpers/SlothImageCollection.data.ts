@@ -19,6 +19,11 @@ export const slothImageCollection = {
     "images/themes/george/happy-george.jpg",
     "images/themes/george/silly-george.jpg",
   ],
+  "ice-age": [
+    "images/themes/ice-age/ice-age-granny.png",
+    "images/themes/ice-age/ice-age-scrat.png",
+    "images/themes/ice-age/ice-age-sid.jpg",
+  ],
   keanu: [
     "images/themes/keanu/angry-keanu.jpg",
     "images/themes/keanu/bill-and-ted-keanu.png",

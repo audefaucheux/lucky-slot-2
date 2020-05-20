@@ -1,22 +1,10 @@
 import { useState } from "react";
 
-const Login = ({ findUser, setThemeSelected }) => {
+const Login = ({ findUser }) => {
   const [username, setUsername] = useState("");
-
-  const themes = ["sloth", "cat", "duck", "george", "keanu", "south-park"];
-
-  const formatTheme = (theme: string) => {
-    const themeWords = theme.split("-");
-    const capitalizeString = (word: string) =>
-      word.charAt(0).toUpperCase() + word.slice(1);
-    return themeWords.map((word) => capitalizeString(word)).join(" ");
-  };
 
   const handleUsersnameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setUsername(event.target.value);
-
-  const handleThemeSelected = (event: React.ChangeEvent<HTMLSelectElement>) =>
-    setThemeSelected(event.target.value);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -38,19 +26,6 @@ const Login = ({ findUser, setThemeSelected }) => {
           onChange={handleUsersnameChange}
           required
         />
-        <select
-          id="theme-dropdown"
-          className="form-container-items"
-          onChange={handleThemeSelected}
-          required
-        >
-          <option value="">Select theme...</option>
-          {themes.map((theme, index) => (
-            <option key={index} value={theme}>
-              {formatTheme(theme)}
-            </option>
-          ))}
-        </select>
         <input
           type="submit"
           value="PLAY"
