@@ -1,5 +1,13 @@
 const ThemeSelection = ({ themeSelected, setThemeSelected }) => {
-  const themes = ["sloth", "cat", "duck", "george", "keanu", "south-park"];
+  const themes = [
+    "sloth",
+    "cat",
+    "duck",
+    "george",
+    "ice-age",
+    "keanu",
+    "south-park",
+  ];
 
   const formatTheme = (theme: string) => {
     const themeWords = theme.split("-");
