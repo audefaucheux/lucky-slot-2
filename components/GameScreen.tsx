@@ -93,12 +93,12 @@ const GameScreen = ({ users, user, setUser }) => {
           <SlotMachineImage image={image3} id={3} />
         </div>
       </div>
-      <img
-        src="./images/game/spinbutton.png"
-        alt="Spin Button"
+      <button
         onClick={user.credit > 0 ? handleSpin : handleNoCredit}
         className="spin-button"
-      />
+      >
+        SPIN
+      </button>
       <Leaderboard users={users} />
     </div>
   );
