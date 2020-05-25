@@ -11,7 +11,7 @@ import TopBanner from "./TopBanner";
 import ThemeSelection from "./ThemeSelection";
 
 const GameScreen = ({ users, user, setUser }) => {
-  const placeholderSrc = "./images/game/question-bear_dribbble.png";
+  const placeholderSrc = "./images/game/question-mark.png";
 
   const imagePlaceholder = {
     src: placeholderSrc,
