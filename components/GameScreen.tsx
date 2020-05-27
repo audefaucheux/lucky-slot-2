@@ -10,19 +10,24 @@ import Leaderboard from "./Leaderboard";
 import TopBanner from "./TopBanner";
 import ThemeSelection from "./ThemeSelection";
 
+interface Iimage {
+  src: string;
+  className: string;
+}
+
 const GameScreen = ({ users, user, setUser }) => {
   const placeholderSrc = "./images/game/question-mark.png";
 
-  const imagePlaceholder = {
+  const imagePlaceholder: Iimage = {
     src: placeholderSrc,
     className: "",
   };
 
   const [themeSelected, setThemeSelected] = useState("sloth");
   const [bet, setBet] = useState(10);
-  const [image1, setImage1] = useState(imagePlaceholder);
-  const [image2, setImage2] = useState(imagePlaceholder);
-  const [image3, setImage3] = useState(imagePlaceholder);
+  const [image1, setImage1] = useState<Iimage>(imagePlaceholder);
+  const [image2, setImage2] = useState<Iimage>(imagePlaceholder);
+  const [image3, setImage3] = useState<Iimage>(imagePlaceholder);
 
   const getRandomNumber = (): number => Math.floor(Math.random() * 3);
 
@@ -32,11 +37,13 @@ const GameScreen = ({ users, user, setUser }) => {
     getRandomNumber(),
   ];
 
-  const renderImage = (index: number, imageNumber: string) => {
+  const renderImage = (
+    index: number,
+    imageSetter: (image: Iimage) => void,
+    time: number
+  ) => {
     const imageUrl = slothImageCollection[themeSelected][index];
-    imageNumber === "image1" && setImage1({ src: imageUrl, className: "" });
-    imageNumber === "image2" && setImage2({ src: imageUrl, className: "" });
-    imageNumber === "image3" && setImage3({ src: imageUrl, className: "" });
+    setTimeout(() => imageSetter({ src: imageUrl, className: "" }), time);
   };
 
   const getResult = (randomNumberArray: number[]) => {
@@ -53,8 +60,8 @@ const GameScreen = ({ users, user, setUser }) => {
     }
   };
 
-  const renderSpinningImage = (setState): void =>
-    setState({ src: placeholderSrc, className: "animated infinite shake" });
+  const renderSpinningImage = (imageSetter): void =>
+    imageSetter({ src: placeholderSrc, className: "animated infinite shake" });
 
   const handleSpin = () => {
     renderSpinningImage(setImage1);
@@ -63,9 +70,9 @@ const GameScreen = ({ users, user, setUser }) => {
 
     const randomNumberArray: number[] = spinResults();
 
-    setTimeout(() => renderImage(randomNumberArray[0], "image1"), 1000);
-    setTimeout(() => renderImage(randomNumberArray[1], "image2"), 1400);
-    setTimeout(() => renderImage(randomNumberArray[2], "image3"), 1900);
+    renderImage(randomNumberArray[0], setImage1, 1000);
+    renderImage(randomNumberArray[1], setImage2, 1400);
+    renderImage(randomNumberArray[2], setImage3, 1900);
     setTimeout(() => getResult(randomNumberArray), 2000);
   };
 
