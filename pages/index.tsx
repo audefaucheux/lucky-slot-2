@@ -88,7 +88,7 @@ const Home = () => {
           background-image: url(../images/game/redslotmachine2.png);
           background-repeat: no-repeat;
           background-size: 590px auto;
-          margin: 27px auto 0;
+          margin: 27px auto;
           width: 590px;
         }
 
@@ -111,8 +111,18 @@ const Home = () => {
         }
 
         .spin-button {
-          width: 12rem;
-          margin: 1rem;
+          height: 6rem;
+          width: 6rem;
+          border-radius: 50%;
+          background-color: red;
+          border: 4px solid black;
+          font-family: "Ribeye", cursive;
+          font-size: 22px;
+          color: white;
+        }
+
+        .spin-button:hover {
+          box-shadow: inset 0 0 0 50px rgba(0, 0, 0, 0.2);
         }
 
         //// BET ////
