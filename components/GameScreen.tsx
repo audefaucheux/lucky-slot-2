@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { uniq } from "lodash";
 
 import { slothImageCollection } from "../Helpers/SlothImageCollection.data";
-import SlotMachineImage from "./SlotMachineImage";
 import { updateUser } from "../Adapters/APIs";
 
-import BetOption from "./BetOption";
-import Leaderboard from "./Leaderboard";
-import SpinButton from "./SpinButton";
-import ThemeSelection from "./ThemeSelection";
-import TopBanner from "./TopBanner";
+import BetOption from "./game_components/BetOption";
+import Leaderboard from "./game_components/Leaderboard";
+import SlotMachineImage from "./game_components/SlotMachineImage";
+import SpinButton from "./game_components/SpinButton";
+import ThemeSelection from "./game_components/ThemeSelection";
+import TopBanner from "./layout/TopBanner";
 
 interface Iimage {
   src: string;
