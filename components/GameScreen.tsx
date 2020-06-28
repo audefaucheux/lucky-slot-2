@@ -55,14 +55,11 @@ const GameScreen = ({ users, user, setUser }) => {
   const getResult = (randomNumberArray: number[]) => {
     const uniqueNumberArray = uniq(randomNumberArray);
     if (uniqueNumberArray.length === 1) {
-      const userUpdate = {
-        ...user,
-        credit: user.credit + bet * 5,
-      };
-      updateUser(userUpdate.id, userUpdate).then(setUser);
+      const newCredit = user.credit + bet * 5;
+      updateUser(user._id, newCredit).then(setUser).catch(console.log);
     } else {
-      const userUpdate = { ...user, credit: user.credit - bet };
-      updateUser(userUpdate.id, userUpdate).then(setUser);
+      const newCredit = user.credit - bet;
+      updateUser(user._id, newCredit).then(setUser).catch(console.log);
     }
   };
 

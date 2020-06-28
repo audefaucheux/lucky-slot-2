@@ -7,7 +7,7 @@ export const getUsers = (): Promise<User[]> => {
   return axios({
     method: "get",
     url: `${server}/users`,
-  }).then((res) => res.data);
+  }).then((res) => res.data.data);
 };
 
 export const createUser = (data): Promise<User> => {
@@ -15,13 +15,13 @@ export const createUser = (data): Promise<User> => {
     method: "post",
     url: `${server}/users`,
     data,
-  }).then((res) => res.data);
+  }).then((res) => res.data.data);
 };
 
-export const updateUser = (id: number, data: User): Promise<User> => {
+export const updateUser = (id: number, credit: number): Promise<User> => {
   return axios({
-    method: "patch",
+    method: "put",
     url: `${server}/users/${id}`,
-    data,
-  }).then((res) => res.data);
+    data: { credit },
+  }).then((res) => res.data.data);
 };
