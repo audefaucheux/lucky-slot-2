@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { uniq } from "lodash";
 
 import { slothImageCollection } from "../Helpers/SlothImageCollection.data";
-import SlotMachineImage from "./SlotMachineImage";
 import { updateUser } from "../Adapters/APIs";
 
-import BetOption from "./BetOption";
-import Leaderboard from "./Leaderboard";
-import TopBanner from "./TopBanner";
-import ThemeSelection from "./ThemeSelection";
+import BetOption from "./game_components/BetOption";
+import Leaderboard from "./game_components/Leaderboard";
+import SlotMachineImage from "./game_components/SlotMachineImage";
+import SpinButton from "./game_components/SpinButton";
+import ThemeSelection from "./game_components/ThemeSelection";
+import TopBanner from "./layout/TopBanner";
 
 interface Iimage {
   src: string;
@@ -16,18 +17,23 @@ interface Iimage {
 }
 
 const GameScreen = ({ users, user, setUser }) => {
-  const placeholderSrc = "./images/game/question-mark.png";
+  const placeholderSrc: string = "./images/game/question-mark.png";
 
   const imagePlaceholder: Iimage = {
     src: placeholderSrc,
     className: "",
   };
 
-  const [themeSelected, setThemeSelected] = useState("sloth");
-  const [bet, setBet] = useState(10);
+  const [themeSelected, setThemeSelected] = useState<string>("sloth");
+  const [bet, setBet] = useState<number>(10);
   const [image1, setImage1] = useState<Iimage>(imagePlaceholder);
   const [image2, setImage2] = useState<Iimage>(imagePlaceholder);
   const [image3, setImage3] = useState<Iimage>(imagePlaceholder);
+
+  const renderSpinningImage = (
+    imageSetter: (image: Iimage) => void,
+    placeholder: string
+  ) => imageSetter({ src: placeholder, className: "animated infinite shake" });
 
   const getRandomNumber = (): number => Math.floor(Math.random() * 3);
 
@@ -60,13 +66,10 @@ const GameScreen = ({ users, user, setUser }) => {
     }
   };
 
-  const renderSpinningImage = (imageSetter): void =>
-    imageSetter({ src: placeholderSrc, className: "animated infinite shake" });
-
   const handleSpin = () => {
-    renderSpinningImage(setImage1);
-    renderSpinningImage(setImage2);
-    renderSpinningImage(setImage3);
+    renderSpinningImage(setImage1, placeholderSrc);
+    renderSpinningImage(setImage2, placeholderSrc);
+    renderSpinningImage(setImage3, placeholderSrc);
 
     const randomNumberArray: number[] = spinResults();
 
@@ -74,10 +77,6 @@ const GameScreen = ({ users, user, setUser }) => {
     renderImage(randomNumberArray[1], setImage2, 1400);
     renderImage(randomNumberArray[2], setImage3, 1900);
     setTimeout(() => getResult(randomNumberArray), 2000);
-  };
-
-  const handleNoCredit = () => {
-    alert("You don't have enough credit to spin");
   };
 
   useEffect(() => {
@@ -100,12 +99,11 @@ const GameScreen = ({ users, user, setUser }) => {
           <SlotMachineImage image={image3} id={3} />
         </div>
       </div>
-      <button
-        onClick={user.credit > 0 ? handleSpin : handleNoCredit}
-        className="spin-button"
-      >
-        SPIN
-      </button>
+      {user.credit <= 0 ? (
+        <div>You don't have enough credit to spin</div>
+      ) : (
+        <SpinButton {...{ user, handleSpin }} />
+      )}
       <Leaderboard users={users} />
     </div>
   );
