@@ -20,7 +20,7 @@ export const createUser = (data): Promise<User> => {
 
 export const updateUser = (id: number, credit: number): Promise<User> => {
   return axios({
-    method: "put",
+    method: "patch",
     url: `${server}/users/${id}`,
     data: { credit },
   }).then((res) => res.data.data);
