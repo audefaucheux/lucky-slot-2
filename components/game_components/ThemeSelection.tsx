@@ -1,4 +1,4 @@
-const ThemeSelection = ({ themeSelected, setThemeSelected }) => {
+const ThemeSelection = ({ setThemeSelected }) => {
   const themes = [
     "sloth",
     "cat",
