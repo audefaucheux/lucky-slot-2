@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { isEmpty } from "lodash";
 
 import { getUsers, createUser } from "../Adapters/APIs";
-import Header from "../components/Header";
+import Header from "../components/layout/Header";
 import GameScreen from "../components/GameScreen";
 import Login from "../components/Login";
-import Footer from "../components/Footer";
+import Footer from "../components/layout/Footer";
 
 const SlotMachineApp = () => {
   // const defaultUser = {
