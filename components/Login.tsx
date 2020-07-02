@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Login = ({ findUser }) => {
+const Login = ({ users, findUser }) => {
   const [username, setUsername] = useState("");
 
   const handleUsersnameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -31,6 +31,7 @@ const Login = ({ findUser }) => {
           type="submit"
           value="PLAY"
           className="form-container-items btn btn-info"
+          disabled={users.length === 0}
         />
       </form>
       <img
