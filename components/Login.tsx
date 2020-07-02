@@ -21,6 +21,7 @@ const Login = ({ findUser }) => {
       >
         <input
           type="text"
+          name="username"
           className="form-container-items"
           placeholder="enter username..."
           onChange={handleUsersnameChange}
