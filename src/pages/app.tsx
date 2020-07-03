@@ -36,7 +36,6 @@ const SlotMachineApp = () => {
   return (
     <>
       <Header />
-      {console.log(process.env)}
       {isEmpty(user) ? (
         <Login {...{ users, findUser }} />
       ) : (
