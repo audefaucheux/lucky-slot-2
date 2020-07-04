@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "dependencies": {
-    "@types/jest": "^25.2.3",
     "@types/lodash": "^4.14.150",
     "axios": "^0.19.2",
     "lodash": "^4.17.15",
@@ -18,8 +19,10 @@
   },
   "devDependencies": {
     "@testing-library/react": "^10.0.4",
+    "@types/jest": "^26.0.3",
     "@types/node": "^13.13.2",
     "@types/react": "^16.9.34",
+    "cypress": "^4.9.0",
     "typescript": "^3.8.3"
   }
 }
