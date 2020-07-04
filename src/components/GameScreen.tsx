@@ -1,37 +1,31 @@
 import { useState, useEffect } from "react";
 import { uniq } from "lodash";
-
 import { slothImageCollection } from "../Helpers/SlothImageCollection.data";
 import { updateUser } from "../Adapters/APIs";
-
 import BetOption from "./game_components/BetOption";
 import Leaderboard from "./game_components/Leaderboard";
 import SlotMachineImage from "./game_components/SlotMachineImage";
 import SpinButton from "./game_components/SpinButton";
 import ThemeSelection from "./game_components/ThemeSelection";
 import TopBanner from "./layout/TopBanner";
-
-interface Iimage {
-  src: string;
-  className: string;
-}
+import { Image } from "../Interfaces/Image";
 
 const GameScreen = ({ users, user, setUser }) => {
   const placeholderSrc: string = "./images/game/question-mark.png";
 
-  const imagePlaceholder: Iimage = {
+  const imagePlaceholder: Image = {
     src: placeholderSrc,
     className: "",
   };
 
   const [themeSelected, setThemeSelected] = useState<string>("sloth");
   const [bet, setBet] = useState<number>(10);
-  const [image1, setImage1] = useState<Iimage>(imagePlaceholder);
-  const [image2, setImage2] = useState<Iimage>(imagePlaceholder);
-  const [image3, setImage3] = useState<Iimage>(imagePlaceholder);
+  const [image1, setImage1] = useState<Image>(imagePlaceholder);
+  const [image2, setImage2] = useState<Image>(imagePlaceholder);
+  const [image3, setImage3] = useState<Image>(imagePlaceholder);
 
   const renderSpinningImage = (
-    imageSetter: (image: Iimage) => void,
+    imageSetter: (image: Image) => void,
     placeholder: string
   ) => imageSetter({ src: placeholder, className: "animated infinite shake" });
 
@@ -45,7 +39,7 @@ const GameScreen = ({ users, user, setUser }) => {
 
   const renderImage = (
     index: number,
-    imageSetter: (image: Iimage) => void,
+    imageSetter: (image: Image) => void,
     time: number
   ) => {
     const imageUrl = slothImageCollection[themeSelected][index];
