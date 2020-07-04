@@ -23,6 +23,12 @@ Run the development server
 npm run dev
 ```
 
+Build and start docker container
+
+```
+docker-compose up --build
+```
+
 # Built with
 
 - **Bootstrap** CSS Styling

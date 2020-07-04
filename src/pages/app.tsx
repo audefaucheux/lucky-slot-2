@@ -6,17 +6,12 @@ import Header from "../components/layout/Header";
 import GameScreen from "../components/GameScreen";
 import Login from "../components/Login";
 import Footer from "../components/layout/Footer";
+import ErrorMessage from "../Constants/ErrorMessage";
 
 const SlotMachineApp = () => {
-  // const defaultUser = {
-  //   username: "Aude",
-  //   credit: 100,
-  //   id: 1,
-  // };
-
   const [users, setUsers] = useState([]);
-  // const [user, setUser] = useState(defaultUser);
   const [user, setUser] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
 
   const findUser = (usernameInput: string) => {
     const existingUser = users.find(
@@ -27,18 +22,22 @@ const SlotMachineApp = () => {
       setUser(existingUser);
     } else {
       const newUser = { username: usernameInput };
-      createUser(newUser).then(setUser);
+      createUser(newUser)
+        .then(setUser)
+        .catch((e) => setErrorMessage(ErrorMessage.USER_NOT_CREATED));
     }
   };
 
   useEffect(() => {
-    getUsers().then(setUsers);
+    getUsers()
+      .then(setUsers)
+      .catch((e) => setErrorMessage(ErrorMessage.USERS_NOT_RETRIEVED));
   }, [user]);
   return (
     <>
       <Header />
       {isEmpty(user) ? (
-        <Login {...{ findUser }} />
+        <Login {...{ users, findUser }} />
       ) : (
         <GameScreen {...{ users, user, setUser }} />
       )}
