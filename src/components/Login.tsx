@@ -31,7 +31,7 @@ const Login = ({ users, findUser }) => {
           type="submit"
           value="PLAY"
           className="form-container-items btn btn-info"
-          disabled={users.length === 0}
+          // disabled={users.length === 0}
         />
       </form>
       <img
