@@ -1,12 +1,17 @@
 describe("Game", () => {
-  const stubGetUsers = {
-    method: "GET",
-    url: "/users",
-    response: [{ id: 1, username: "Aude", credit: 100 }],
-  };
+  // const stubGetUsers = {
+  //   method: "GET",
+  //   url: "/users",
+  //   response: [{ id: 1, username: "Aude", credit: 100 }],
+  // };
 
   beforeEach(() => {
-    cy.server().route(stubGetUsers);
+    cy.server();
+    cy.route({
+      method: "GET",
+      url: "/users",
+      response: [{ id: 1, username: "Aude", credit: 100 }],
+    });
     cy.visit("/");
     cy.get("input[name='username']").type("Aude");
     cy.get("input[value='PLAY']").click();
