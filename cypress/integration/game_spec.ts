@@ -5,7 +5,10 @@ describe("Game", () => {
   //   response: [{ id: 1, username: "Aude", credit: 100 }],
   // };
 
-  beforeEach(() => {
+  // beforeEach(() => {
+  // });
+
+  it("should display username and credit", () => {
     cy.server();
     cy.route({
       method: "GET",
@@ -16,9 +19,6 @@ describe("Game", () => {
     cy.wait("@getUsers").should("have.property", "status", 200);
     cy.get("input[name='username']").type("Aude");
     cy.get("input[value='PLAY']").click();
-  });
-
-  it("should display username and credit", () => {
     cy.get("#current-user").contains("Aude");
     cy.get("h1").find("span").contains(100);
   });
