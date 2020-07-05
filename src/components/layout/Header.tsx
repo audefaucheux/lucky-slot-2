@@ -1,21 +1,27 @@
 import Head from "next/head";
 
+const googleAnalyticsScript = () => (
+  <>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-166946061-1"
+    ></script>
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'UA-166946061-1');`,
+      }}
+    />
+  </>
+);
+
 const Header = () => {
   return (
     <Head>
-      <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=UA-166946061-1"
-      ></script>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-166946061-1');`,
-        }}
-      />
+      {process.env.NODE_ENV === "production" && googleAnalyticsScript()}
       <link
         rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
