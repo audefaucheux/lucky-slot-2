@@ -6,8 +6,7 @@ describe("Game", () => {
   };
 
   beforeEach(() => {
-    cy.server();
-    cy.route(stubGetUsers);
+    cy.server().route(stubGetUsers);
     cy.visit("/");
     cy.get("input[name='username']").type("Aude");
     cy.get("input[value='PLAY']").click();
