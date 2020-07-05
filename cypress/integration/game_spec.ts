@@ -11,8 +11,9 @@ describe("Game", () => {
       method: "GET",
       url: "/users",
       response: [{ id: 1, username: "Aude", credit: 100 }],
-    });
+    }).as("getUsers");
     cy.visit("/");
+    cy.wait("@getUsers").should("have.property", "status", 200);
     cy.get("input[name='username']").type("Aude");
     cy.get("input[value='PLAY']").click();
   });
