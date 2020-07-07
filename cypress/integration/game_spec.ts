@@ -21,7 +21,7 @@ describe("Game", () => {
     cy.get("input[value='PLAY']").click();
   });
 
-  it.only("should display username and credit", () => {
+  it("should display username and credit", () => {
     cy.get("#current-user").contains("Aude");
     cy.get("h1").find("span").contains(100);
   });
