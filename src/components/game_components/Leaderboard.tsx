@@ -1,4 +1,4 @@
-import { User } from "../../interfaces/User";
+import { User } from "../../Interfaces/User";
 
 const Leaderboard = ({ users }) => {
   const leaderBoardTopTen = (users: User[]) => {
