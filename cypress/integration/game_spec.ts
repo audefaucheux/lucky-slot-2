@@ -9,10 +9,20 @@ describe("Game", () => {
     cy.server();
     cy.fixture("users.json").as("users");
     cy.route("GET", "/users", "@users").as("getUsers");
+    // cy.route({
+    //   method: "GET",
+    //   url: "/users",
+    //   response: "@users",
+    //   onRequest: (req) => cy.log(req.url),
+    // }).as("getUsers");
+    // cy.log("cy.route");
   });
 
   it("should display username and credit", () => {
     cy.visit("/");
+    cy.log(process.env.SERVER);
+    // cy.log(Cypress.env("SERVER"));
+    cy.log("hello");
     cy.wait("@getUsers");
     cy.login("Aude");
     cy.get("#current-user").contains("Aude");
