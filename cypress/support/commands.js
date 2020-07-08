@@ -28,3 +28,16 @@ Cypress.Commands.add("login", (username) => {
   cy.get("input[name='username']").type(username);
   cy.get("input[value='PLAY']").click();
 });
+
+// fix to xhr request not working in CI
+Cypress.Commands.overwrite("visit", (originalFn, url, options) => {
+  const opts = Object.assign({}, options, {
+    onBeforeLoad: (window, ...args) => {
+      window.fetch = null;
+      if (options.onBeforeLoad) {
+        return options.onBeforeLoad(window, ...args);
+      }
+    },
+  });
+  return originalFn(url, opts);
+});
