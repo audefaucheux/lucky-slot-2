@@ -12,7 +12,7 @@ describe("Game", () => {
   });
 
   it("should display username and credit", () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
     cy.wait("@getUsers");
     cy.login("Aude");
     cy.get("#current-user").contains("Aude");
