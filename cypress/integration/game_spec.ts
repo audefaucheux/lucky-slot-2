@@ -11,8 +11,7 @@ describe("Game", () => {
     cy.route("GET", "/users", "@users").as("getUsers");
     cy.visit("http://localhost:3000/");
     cy.wait("@getUsers");
-    cy.get("input[name='username']").type("Aude");
-    cy.get("input[value='PLAY']").click();
+    cy.login("Aude");
   });
 
   it("should display username and credit", () => {
