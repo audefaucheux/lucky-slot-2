@@ -9,12 +9,12 @@ describe("Game", () => {
     cy.server();
     cy.fixture("users.json").as("users");
     cy.route("GET", "/users", "@users").as("getUsers");
-    cy.visit("http://localhost:3000/");
-    cy.wait("@getUsers");
-    cy.login("Aude");
   });
 
   it("should display username and credit", () => {
+    cy.visit("http://localhost:3000/");
+    cy.wait("@getUsers");
+    cy.login("Aude");
     cy.get("#current-user").contains("Aude");
     cy.get("h1").find("span").contains(100);
   });
