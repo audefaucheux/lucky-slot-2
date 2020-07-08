@@ -4,6 +4,7 @@ import { User } from "../Interfaces/User";
 const server = process.env.SERVER;
 
 export const getUsers = (): Promise<User[]> => {
+  console.log(server);
   return axios({
     method: "get",
     url: `${server}/users`,
