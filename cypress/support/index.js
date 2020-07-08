@@ -20,6 +20,15 @@ import "./commands";
 // require('./commands')
 
 // use `Cypress` instead of `cy` so this persists across all tests
+// Cypress.on("window:before:load", (win) => {
+//   win.fetch = null;
+// });
+
 Cypress.on("window:before:load", (win) => {
-  win.fetch = null;
+  fetch("https://unpkg.com/unfetch/dist/unfetch.umd.js")
+    .then((stream) => stream.text())
+    .then((response) => {
+      win.eval(response);
+      win.fetch = win.unfetch;
+    });
 });
