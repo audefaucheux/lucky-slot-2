@@ -7,16 +7,10 @@ describe("Game", () => {
 
   beforeEach(() => {
     cy.server();
-    // cy.route({
-    //   method: "GET",
-    //   url: "/users",
-    //   response: [{ id: 1, username: "Aude", credit: 100 }],
-    // }).as("getUsers");
-    // console.log();
     cy.fixture("users.json").as("users");
-    cy.route("GET", "/users", "@users");
-    cy.visit("/");
-    // cy.wait("@getUsers").should("have.property", "status", 200);
+    cy.route("GET", "/users", "@users").as("getUsers");
+    cy.visit("http://localhost:3000/");
+    cy.wait("@getUsers");
     cy.get("input[name='username']").type("Aude");
     cy.get("input[value='PLAY']").click();
   });

@@ -1,4 +1,4 @@
-describe("Login", () => {
+describe.skip("Login", () => {
   const newUser = "Jane";
 
   const stubGetUsers = {
